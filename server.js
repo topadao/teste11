@@ -3,9 +3,14 @@ const axios = require('axios');
 const app = express();
 
 const PORT = process.env.PORT || 3000;
+
+// API KEY em Base64
 const apiKeyBase64 = 'NTcyMzNkMGEwZTMxYTU1ODdlMTU5ZmRj';
+
+// URL do endpoint SyncPay
 const gerarQrCodeUrl = 'https://api.syncpay.pro/v1/gateway/api/';
 
+// Função para gerar QR Code via API
 async function gerarQrCode() {
   const payload = {
     amount: "36.90",
@@ -22,6 +27,12 @@ async function gerarQrCode() {
   return response.data;
 }
 
+// Rota principal só pra testar se API tá online
+app.get('/', (req, res) => {
+  res.send('✅ API Cred Amigo está rodando! Use /checkout pra gerar o QR Code.');
+});
+
+// Rota para gerar o QR Code Pix
 app.get('/checkout', async (req, res) => {
   try {
     const data = await gerarQrCode();
@@ -38,6 +49,7 @@ app.get('/checkout', async (req, res) => {
   }
 });
 
+// Inicia o servidor
 app.listen(PORT, () => {
   console.log(`✅ Servidor rodando na porta ${PORT}`);
 });
