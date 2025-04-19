@@ -1,15 +1,13 @@
 {
-  "name": "syncpay-checkout",
+  "name": "cred-amigo-server",
   "version": "1.0.0",
-  "description": "Checkout Pix cred amigo com valor fixo via SyncPay API",
+  "description": "Servidor para gerar QR Code Pix Cred Amigo",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Seu Nome",
-  "license": "MIT",
   "dependencies": {
-    "axios": "^1.6.8",
-    "express": "^4.19.2"
+    "axios": "^1.6.0",
+    "express": "^4.19.0"
   }
 }
